@@ -79,8 +79,8 @@ window.onload = function() {
 	};
 	
 
-    //this.audioletApp = new AudioletAppComplex();
-    this.audioletApp = new AudioletAppSimple();
+    this.audioletApp = new AudioletAppComplex();
+    //this.audioletApp = new AudioletAppSimple();
 	
 
 };
