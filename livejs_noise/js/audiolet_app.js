@@ -69,8 +69,9 @@ window.onload = function() {
 										 new PSequence([2, 2, 1, 3]),
 										 new PSequence([1, 1, 1, 1])],
 										Infinity);
+		var durationPattern1 = new PSequence([1,0.5,0.5,0.5,1,0.5,0.5,0.5], 100);
 
-		this.audiolet.scheduler.play([frequencyPattern], durationPattern,
+		this.audiolet.scheduler.play([frequencyPattern], durationPattern1,/*The number of beats between events*/
 		  function(frequency) {
 			  var synth = new Synth(this.audiolet, frequency);
 			  synth.connect(this.audiolet.output);
@@ -79,7 +80,7 @@ window.onload = function() {
 	};
 	
 
-    this.audioletApp = new AudioletAppComplex();
+    //this.audioletApp = new AudioletAppComplex();
     //this.audioletApp = new AudioletAppSimple();
 	
 
