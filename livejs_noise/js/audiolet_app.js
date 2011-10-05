@@ -41,13 +41,41 @@ window.onload = function() {
 		this.audiolet = new Audiolet();
 
 		//var frequencyPattern = new PSequence([262, 262, 392, 392], 1); //before music.js
-		var frequencyPattern = new PSequence(
-				[a4.frequency(), 
-				c4.frequency(), 
-				d4.frequency(), 
-				a4.frequency()], 1/*part of pattern*/); //after music.js
+		var frequencyPattern1 = new PSequence(
+				[
+				Note.fromLatin('G3').frequency(), 
+				Note.fromLatin('A3').frequency(), 
+				Note.fromLatin('C4').frequency(), 
+				Note.fromLatin('C4').frequency(),
+				Note.fromLatin('D4').frequency(),
+				Note.fromLatin('D4').frequency(),
+				Note.fromLatin('E4').frequency(),
+				Note.fromLatin('D4').frequency(),
+				Note.fromLatin('D4').frequency(),
+				Note.fromLatin('D4').frequency(),
+				Note.fromLatin('C4').frequency(),
+				], 2/*repeat times*/); //after music.js
 
-		this.audiolet.scheduler.play([frequencyPattern], 1/*WTF this do?*/,
+		var frequencyPattern2 = new PSequence(
+				[
+				Note.fromLatin('A3').frequency(), 
+				Note.fromLatin('C4').frequency(), 
+				Note.fromLatin('D4').frequency(), 
+				Note.fromLatin('D4').frequency(), 
+				Note.fromLatin('C4').frequency(),
+				Note.fromLatin('G3').frequency(),
+				], 1/*repeat times*/); //after music.js
+
+		var durationPattern = new PSequence([0.5,0.25,0.25,0.5,0.5,0.25,0.25,0.25,0.25,0.5,0.5], 2/*repeat times*/);
+
+		//this.audiolet.scheduler.play([frequencyPattern], 0.3/*time interval between notes*/,
+		//  function(frequency) {
+		//	  var synth = new Synth(this.audiolet, frequency);
+		//	  synth.connect(this.audiolet.output);
+		//  }.bind(this)
+		//);
+
+		this.audiolet.scheduler.play([frequencyPattern1], durationPattern,
 		  function(frequency) {
 			  var synth = new Synth(this.audiolet, frequency);
 			  synth.connect(this.audiolet.output);
@@ -80,8 +108,8 @@ window.onload = function() {
 	};
 	
 
-    //this.audioletApp = new AudioletAppComplex();
-    //this.audioletApp = new AudioletAppSimple();
+	//this.audioletApp = new AudioletAppComplex();
+    this.audioletApp = new AudioletAppSimple();
 	
 
 };
